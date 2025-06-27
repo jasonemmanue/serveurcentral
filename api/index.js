@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config();
 
+const contactRoutes = require('./contacts'); 
+
 const authRoutes = require('./auth');
 
 const app = express();
@@ -17,7 +19,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Routes
 app.use('/api/auth', authRoutes);
-
+app.use('/api/contacts', contactRoutes);
 app.get('/api', (req, res) => {
   res.send('API Alanya est fonctionnelle.');
 });
